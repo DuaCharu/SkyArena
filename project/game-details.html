@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Details - SkyArena</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="game-details.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <div class="triangle"></div>
+                <span class="header-title">SkyArena 🎮</span>
+            </div>
+            <nav class="nav-links">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="#" class="nav-link">Store</a>
+                <button id="login-btn" class="btn" onclick="window.location.href='login.html'">Login</button>
+            </nav>
+        </header>
+
+        <div class="game-details-container">
+            <div class="game-hero">
+                <div id="game-banner"></div>
+                <div class="game-info-overlay">
+                    <h1 id="game-title"><img src="https://th.bing.com/th/id/OIP.0yHPWaoLCcsZALXYgjCATgHaEK?w=321&h=181&c=7&r=0&o=5&dpr=1.3&pid=1.7">League of Legends</h1>
+                    <div class="game-meta">
+                        <span id="game-rating">★ 4.9</span>
+                        <span id="game-genre">Action RPG</span>
+                        <span id="game-release">2024</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="game-content">
+                <div class="game-description">
+                    <h2>About the Game</h2>
+                    <p id="game-description">Loading game description...</p>
+                    
+                    <div class="game-features">
+                        <h3><img src="https://th.bing.com/th/id/OIP.7lAHIcBto-weVTWohYjHfwHaEK?rs=1&pid=ImgDetMain" ></h3>
+                        
+                        <ul id="game-features">
+                            <!-- Features will be added dynamically -->
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="game-sidebar">
+                    <div class="game-purchase">
+                        <div class="price-tag">
+                            <span id="game-price">$29.99</span>
+                            <span class="discount">-20%</span>
+                        </div>
+                        <button class="btn pulse" onclick="window.location.href='payment.html'">Buy Now</button>
+                    </div>
+
+                    <div class="game-requirements">
+                        <h3>System Requirements</h3>
+                        <div class="requirements-list" id="system-requirements">
+                            <!-- Requirements will be added dynamically -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="game-media">
+                <h2>Screenshots & Videos</h2>
+                <div class="media-grid" id="game-media">
+                    <!-- Media items will be added dynamically -->
+                </div>
+            </div>
+
+            <div class="game-recommendations">
+                <h2>Similar Games</h2>
+                <div class="recommendations-grid" id="similar-games">
+                    <!-- Similar games will be added dynamically -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="game-details.js"></script>
+</body>
+</html>

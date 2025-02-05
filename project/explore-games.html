@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explore Games - SkyArena</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="explore.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <div class="triangle"></div>
+                <span class="header-title">SkyArena 🎮</span>
+            </div>
+            <nav class="nav-links">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="#" class="nav-link">Store</a>
+                <button id="login-btn" class="btn" onclick="window.location.href='login.html'">Login</button>
+            </nav>
+        </header>
+
+        <div class="explore-container">
+            <div class="explore-header">
+                <h1>Explore Games</h1>
+                <div class="search-bar">
+                    <input type="text" id="game-search" placeholder="Search games...">
+                </div>
+            </div>
+
+            <div class="filters-section">
+                <div class="filter-group">
+                    <h3>Genre</h3>
+                    <div class="filter-options" id="genre-filters">
+                        <button class="filter-btn active" data-genre="all">All</button>
+                        <button class="filter-btn" data-genre="action">Action</button>
+                        <button class="filter-btn" data-genre="rpg">RPG</button>
+                        <button class="filter-btn" data-genre="strategy">Strategy</button>
+                        <button class="filter-btn" data-genre="sports">Sports</button>
+                        <button class="filter-btn" data-genre="adventure">Adventure</button>
+                    </div>
+                </div>
+
+                <div class="filter-group">
+                    <h3>Price Range</h3>
+                    <div class="filter-options" id="price-filters">
+                        <button class="filter-btn" data-price="all">All</button>
+                        <button class="filter-btn" data-price="free">Free</button>
+                        <button class="filter-btn" data-price="under-20">Under $20</button>
+                        <button class="filter-btn" data-price="20-40">$20-$40</button>
+                        <button class="filter-btn" data-price="40-plus">$40+</button>
+                    </div>
+                </div>
+
+                <div class="filter-group">
+                    <h3>Sort By</h3>
+                    <select id="sort-games">
+                        <option value="popular">Most Popular</option>
+                        <option value="newest">Newest</option>
+                        <option value="price-low">Price: Low to High</option>
+                        <option value="price-high">Price: High to Low</option>
+                        <option value="rating">Rating</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="games-grid" id="games-grid">
+                <!-- Games will be added dynamically -->
+            </div>
+
+            <div class="recommendations">
+                <h2>Recommended for You</h2>
+                <div class="recommendations-grid" id="recommended-games">
+                    <!-- Recommended games will be added dynamically -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="explore.js"></script>
+</body>
+</html>
