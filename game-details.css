@@ -1,0 +1,145 @@
+.game-details-container {
+    margin-top: 80px;
+}
+
+.game-hero {
+    position: relative;
+    height: 500px;
+    overflow: hidden;
+    background-size: contain;  /* Ensures the entire image is visible */
+    background-position: center;
+    background-repeat: no-repeat; /* Prevents the image from repeating */
+}
+
+#game-banner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;  /* Optional: In case you want to use an <img> element instead of a background */
+}
+
+
+.game-info-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 40px;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.9));
+}
+
+.game-meta {
+    display: flex;
+    gap: 20px;
+    margin-top: 10px;
+}
+
+.game-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 40px;
+    margin-top: 40px;
+}
+
+.game-description {
+    background: rgba(15, 15, 26, 0.95);
+    padding: 30px;
+    border-radius: 15px;
+}
+
+.game-features {
+    margin-top: 30px;
+}
+
+.game-features ul {
+    list-style: none;
+    margin-top: 20px;
+}
+
+.game-features li {
+    margin-bottom: 10px;
+    padding-left: 20px;
+    position: relative;
+}
+
+.game-features li::before {
+    content: "►";
+    position: absolute;
+    left: 0;
+    color: var(--accent-color);
+}
+
+.game-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.game-purchase {
+    background: rgba(15, 15, 26, 0.95);
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+}
+
+.price-tag {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.discount {
+    background: var(--accent-color);
+    color: var(--background-dark);
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.game-requirements {
+    background: rgba(15, 15, 26, 0.95);
+    padding: 30px;
+    border-radius: 15px;
+}
+
+.requirements-list {
+    margin-top: 20px;
+}
+
+.game-media {
+    margin-top: 40px;
+}
+
+.media-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.media-item {
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.media-item:hover {
+    transform: scale(1.05);
+}
+
+.game-recommendations {
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.recommendations-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}

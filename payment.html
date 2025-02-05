@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment - SkyArena</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="payment.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <div class="triangle"></div>
+                <span class="header-title">SkyArena 🎮</span>
+            </div>
+            <nav class="nav-links">
+                <a href="index.html" class="nav-link">Home</a>
+            </nav>
+        </header>
+
+        <div class="payment-container">
+            <div class="game-summary">
+                <div id="game-image" class="payment-game-image"></div>
+                <div class="game-details">
+                    <h2 id="game-title">Game Title</h2>
+                    <p id="game-price">$29.99</p>
+                </div>
+            </div>
+
+            <div class="payment-methods-container">
+                <h3>Select Payment Method</h3>
+                <div class="payment-methods">
+                    <div class="payment-method">
+                        <input type="radio" name="payment" id="credit-card" checked>
+                        <label for="credit-card">
+                            <img src="https://logos-world.net/wp-content/uploads/2020/06/Visa-Logo-2006.png" alt="Credit Card">
+                            Credit Card
+                        </label>
+                    </div>
+                    <div class="payment-method">
+                        <input type="radio" name="payment" id="paypal">
+                        <label for="paypal">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcStBhIXtwoG9RkAL4GGCkpw4kc1jSm3q8-86g&s" alt="PayPal">
+                            PayPal
+                        </label>
+                    </div>
+                </div>
+
+                <form id="payment-form" class="payment-form">
+                    <div class="form-group">
+                        <input type="text" placeholder="Card Number" required pattern="[0-9]{16}">
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <input type="text" placeholder="MM/YY" required pattern="(0[1-9]|1[0-2])\/([0-9]{2})">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" placeholder="CVV" required pattern="[0-9]{3,4}">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" placeholder="Cardholder Name" required>
+                    </div>
+                    <button type="submit" class="btn">Complete Purchase</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="payment.js"></script>
+</body>
+</html>

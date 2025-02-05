@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cyber Warrior - Avoid Enemies</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #111;
+            overflow: hidden;
+        }
+
+        .game-container {
+            position: relative;
+            width: 800px;
+            height: 600px;
+            background-color: #222;
+            border: 2px solid #fff;
+        }
+
+        .cyber-warrior {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background-color: #00f;
+            border-radius: 50%;
+        }
+
+        .enemy {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background-color: red;
+            border-radius: 10px;
+        }
+
+        .health-bar {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            width: 200px;
+            height: 20px;
+            background-color: #444;
+        }
+
+        .health {
+            height: 100%;
+            background-color: red;
+        }
+
+        .score {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            color: #fff;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="game-container">
+        <div class="health-bar">
+            <div class="health" style="width: 100%"></div>
+        </div>
+        <div class="cyber-warrior" style="top: 275px; left: 375px;"></div>
+        <div class="score">Score: 0</div>
+    </div>
+
+    <script>
+        const warrior = document.querySelector('.cyber-warrior');
+        const healthBar = document.querySelector('.health');
+        const scoreDisplay = document.querySelector('.score');
+        const gameContainer = document.querySelector('.game-container');
+        let score = 0;
+        let health = 100;
+        let warriorPosition = { x: 375, y: 275 };
+        let enemies = [];
+
+        // Movement speed
+        const speed = 10;
+
+        // Update score
+        function updateScore() {
+            score++;
+            scoreDisplay.textContent = `Score: ${score}`;
+        }
+
+        // Move the Cyber Warrior based on arrow key input
+        function moveWarrior(e) {
+            if (e.key === "ArrowUp") {
+                warriorPosition.y -= speed;
+            } else if (e.key === "ArrowDown") {
+                warriorPosition.y += speed;
+            } else if (e.key === "ArrowLeft") {
+                warriorPosition.x -= speed;
+            } else if (e.key === "ArrowRight") {
+                warriorPosition.x += speed;
+            }
+
+            // Ensure the warrior doesn't go out of bounds
+            if (warriorPosition.x < 0) warriorPosition.x = 0;
+            if (warriorPosition.x > 750) warriorPosition.x = 750;
+            if (warriorPosition.y < 0) warriorPosition.y = 0;
+            if (warriorPosition.y > 550) warriorPosition.y = 550;
+
+            // Update position of the warrior on screen
+            warrior.style.left = warriorPosition.x + 'px';
+            warrior.style.top = warriorPosition.y + 'px';
+        }
+
+        // Create enemies at random positions
+        function createEnemy() {
+            const enemy = document.createElement('div');
+            enemy.classList.add('enemy');
+            const x = Math.floor(Math.random() * 750);
+            const y = Math.floor(Math.random() * 550);
+            enemy.style.left = `${x}px`;
+            enemy.style.top = `${y}px`;
+            gameContainer.appendChild(enemy);
+            enemies.push(enemy);
+        }
+
+        // Move enemies down the screen
+        function moveEnemies() {
+            enemies.forEach(enemy => {
+                const enemyTop = parseInt(enemy.style.top);
+                if (enemyTop >= 600) {
+                    enemy.remove();
+                    enemies = enemies.filter(e => e !== enemy);
+                    createEnemy();
+                    updateScore();
+                } else {
+                    enemy.style.top = `${enemyTop + 2}px`;
+                }
+
+                // Check for collision
+                if (isCollision(warrior, enemy)) {
+                    health -= 5;
+                    healthBar.querySelector('.health').style.width = `${health}%`;
+                    enemy.remove();
+                    enemies = enemies.filter(e => e !== enemy);
+                    createEnemy();
+                    if (health <= 0) {
+                        endGame();
+                    }
+                }
+            });
+        }
+
+        // Check if two elements are colliding
+        function isCollision(warrior, enemy) {
+            const warriorRect = warrior.getBoundingClientRect();
+            const enemyRect = enemy.getBoundingClientRect();
+            return !(warriorRect.right < enemyRect.left || 
+                     warriorRect.left > enemyRect.right || 
+                     warriorRect.bottom < enemyRect.top || 
+                     warriorRect.top > enemyRect.bottom);
+        }
+
+        // End the game when health reaches 0
+        function endGame() {
+            alert('Game Over! Your score: ' + score);
+            location.reload(); // Reload the page to restart the game
+        }
+
+        // Start the game
+        function startGame() {
+            createEnemy();
+            setInterval(moveEnemies, 20);
+            setInterval(updateScore, 2000);
+        }
+
+        // Listen for key events to move the warrior
+        document.addEventListener('keydown', moveWarrior);
+
+        // Start the game
+        startGame();
+    </script>
+</body>
+</html>
